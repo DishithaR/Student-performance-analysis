@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+        }
+        h2 {
+            color: #4a90e2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+        .form-group button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-group button:hover {
+            background-color: #357ABD;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #eaf4f4;
+            border: 1px solid #cce4e4;
+            border-radius: 4px;
+            color: #333;
+        }
+        .result h2 {
+            color: #333;
+        }
+        .back-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #31b97a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #3572bd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Performance Prediction</h1>
+        <form action="/predict" method="POST">
+            <!-- Overall Performance Prediction -->
+            <h2>Overall Performance Prediction</h2>
+            <div class="form-group">
+                <label for="GPA">GPA (1-10):</label>
+                <input type="number" id="GPA" name="GPA" step="0.01" min="1" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="SAT_Score">SAT Score (10000-20000):</label>
+                <input type="number" id="SAT_Score" name="SAT_Score" min="10000" max="20000" required>
+            </div>
+            <div class="form-group">
+                <label for="Study_Hours_Per_Week">Study Hours Per Week (1-30):</label>
+                <input type="number" id="Study_Hours_Per_Week" name="Study_Hours_Per_Week" min="1" max="30" required>
+            </div>
+            <div class="form-group">
+                <label for="Parent_Education">Parent Education:</label>
+                <input type="text" id="Parent_Education" name="Parent_Education" required>
+            </div>
+            <div class="form-group">
+                <label for="Extracurricular_Participation">Extracurricular Participation:</label>
+                <select id="Extracurricular_Participation" name="Extracurricular_Participation" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Motivation_Level">Motivation Level:</label>
+                <select id="Motivation_Level" name="Motivation_Level" required>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Home_Environment">Home Environment:</label>
+                <select id="Home_Environment" name="Home_Environment" required>
+                    <option value="Supportive">Supportive</option>
+                    <option value="Unsupportive">Unsupportive</option>
+                </select>
+            </div>
+
+            <!-- Individual Performance Prediction -->
+            <h2>Individual Performance Prediction</h2>
+            <div class="form-group">
+                <label for="cognitive">Cognitive Skills (0-5):</label>
+                <input type="number" id="cognitive" name="cognitive" step="0.1" min="0" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="interpersonal">Interpersonal Skills (0-5):</label>
+                <input type="number" id="interpersonal" name="interpersonal" step="0.1" min="0" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="verbal">Verbal Skills (0-5):</label>
+                <input type="number" id="verbal" name="verbal" step="0.1" min="0" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="analytical">Analytical Skills (0-5):</label>
+                <input type="number" id="analytical" name="analytical" step="0.1" min="0" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Predict</button>
+            </div>
+        </form>
+
+        <!-- Display predictions -->
+        {% if prediction %}
+        <div class="result">
+            <h2>Prediction Results</h2>
+            <p><strong>Overall Performance Prediction:</strong> {{ prediction['overall'] }}</p>
+            <p><strong>Individual Performance Prediction:</strong> {{ prediction['individual'] }}</p>
+        </div>
+        {% endif %}
+
+        <!-- Back to Home Button -->
+        <a href="/" class="back-button">Back to Home</a>
+    </div>
+</body>
+</html>

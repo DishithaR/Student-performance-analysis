@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            background-color: #6c757d;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #result h3 {
+            color: #333;
+        }
+        #result p {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Exam</h1>
+<form id="examForm">
+    <!-- Page 1 - Cognitive Skills -->
+    <div id="page1" class="question-page ">
+        <h1>Cognitive Skills</h1>
+        <div class="question">
+            <p>1. When faced with a new complex problem, what is your typical first approach?</p>
+            <label><input type="radio" name="q1" value="a"> a) Break it down into smaller, manageable parts</label>
+            <label><input type="radio" name="q1" value="b"> b) Look for similar problems I've solved before</label>
+            <label><input type="radio" name="q1" value="c"> c) Gather all available information first</label>
+            <label><input type="radio" name="q1" value="d"> d) Ask someone else for guidance immediately</label>
+        </div>
+        <div class="question">
+            <p>2. How do you typically remember important information?</p>
+            <label><input type="radio" name="q2" value="a"> a) Create visual diagrams or mind maps</label>
+            <label><input type="radio" name="q2" value="b"> b) Write detailed notes and summaries</label>
+            <label><input type="radio" name="q2" value="c"> c) Use mnemonics and memory techniques</label>
+            <label><input type="radio" name="q2" value="d"> d) Repeat information out loud several times</label>
+        </div>
+        <div class="question">
+            <p>3. When learning a new concept, how do you prefer to understand it?</p>
+            <label><input type="radio" name="q3" value="a"> a) Connect it to real-world examples</label>
+            <label><input type="radio" name="q3" value="b"> b) Study theoretical principles first</label>
+            <label><input type="radio" name="q3" value="c"> c) Practice through trial and error</label>
+            <label><input type="radio" name="q3" value="d"> d) Discuss it with others to gain perspective</label>
+        </div>
+        <div class="question">
+            <p>4. What do you do when your usual problem-solving method isn't working?</p>
+            <label><input type="radio" name="q4" value="a"> a) Try multiple alternative approaches systematically</label>
+            <label><input type="radio" name="q4" value="b"> b) Take a break and return with fresh perspective</label>
+            <label><input type="radio" name="q4" value="c"> c) Research different solving methods</label>
+            <label><input type="radio" name="q4" value="d"> d) Continue with the same method more carefully</label>
+        </div>
+        <div class="question">
+            <p>5. How do you typically approach decision-making?</p>
+            <label><input type="radio" name="q5" value="a"> a) Analyze all possible outcomes before deciding</label>
+            <label><input type="radio" name="q5" value="b"> b) Trust my instincts based on experience</label>
+            <label><input type="radio" name="q5" value="c"> c) Consider others' advice and experiences</label>
+            <label><input type="radio" name="q5" value="d"> d) Make quick decisions and adjust as needed</label>
+        </div>
+        <button type="button" onclick="nextPage(1)">Next</button>
+    </div>
+
+    <!-- Page 2 - Interpersonal Skills -->
+    <div id="page2" class="question-page hidden">
+        <h1>Interpersonal Skills</h1>
+        <!-- Questions 6 to 10 -->
+        <div class="question">
+            <p>6. How do you typically handle conflicts in group projects?</p>
+            <label><input type="radio" name="q6" value="a"> a) Find common ground and negotiate</label>
+            <label><input type="radio" name="q6" value="b"> b) Listen to all sides before suggesting solutions</label>
+            <label><input type="radio" name="q6" value="c"> c) Defer to team leader or majority</label>
+            <label><input type="radio" name="q6" value="d"> d) Address issues immediately and directly</label>
+        </div>
+        <div class="question">
+            <p>7. When working in a team, what role do you usually take?</p>
+            <label><input type="radio" name="q7" value="a"> a) Leader who organizes and delegates</label>
+            <label><input type="radio" name="q7" value="b"> b) Mediator who ensures everyone is heard</label>
+            <label><input type="radio" name="q7" value="c"> c) Creative contributor with new ideas</label>
+            <label><input type="radio" name="q7" value="d"> d) Detail-oriented executor of tasks</label>
+        </div>
+        <div class="question">
+            <p>8. How do you respond when a team member isn't contributing equally?</p>
+            <label><input type="radio" name="q8" value="a"> a) Have a private conversation with them</label>
+            <label><input type="radio" name="q8" value="b"> b) Bring it up in a team meeting</label>
+            <label><input type="radio" name="q8" value="c"> c) Adjust my own workload to compensate</label>
+            <label><input type="radio" name="q8" value="d"> d) Report to supervisor/instructor</label>
+        </div>
+        <div class="question">
+            <p>9. When receiving constructive criticism, how do you typically react?</p>
+            <label><input type="radio" name="q9" value="a"> a) Thank them and ask for specific examples</label>
+            <label><input type="radio" name="q9" value="b"> b) Defend my position and explain my reasoning</label>
+            <label><input type="radio" name="q9" value="c"> c) Take notes and reflect before responding</label>
+            <label><input type="radio" name="q9" value="d"> d) Immediately try to implement changes</label>
+        </div>
+        <div class="question">
+            <p>10. How do you handle differences in working styles within a team?</p>
+            <label><input type="radio" name="q10" value="a"> a) Adapt my style to match others</label>
+            <label><input type="radio" name="q10" value="b"> b) Discuss and establish common ground rules</label>
+            <label><input type="radio" name="q10" value="c"> c) Focus on results rather than methods</label>
+            <label><input type="radio" name="q10" value="d"> d) Maintain my style while respecting others</label>
+        </div>
+        <button type="button" class="prev-button" onclick="prevPage(2)">Previous</button>
+        <button type="button" onclick="nextPage(2)">Next</button>
+    </div>
+
+    <!-- Page 3 - Verbal Skills -->
+    <div id="page3" class="question-page hidden">
+        <h1>Verbal Skills</h1>
+        <!-- Questions 11 to 15 -->
+        <div class="question">
+            <p>11. When explaining complex ideas, how do you usually communicate?</p>
+            <label><input type="radio" name="q11" value="a"> a) Use analogies and examples</label>
+            <label><input type="radio" name="q11" value="b"> b) Break down into step-by-step explanation</label>
+            <label><input type="radio" name="q11" value="c"> c) Draw diagrams while explaining</label>
+            <label><input type="radio" name="q11" value="d"> d) Ask questions to ensure understanding</label>
+        </div>
+        <div class="question">
+            <p>12. How do you typically prepare for presentations?</p>
+            <label><input type="radio" name="q12" value="a"> a) Write out a complete script</label>
+            <label><input type="radio" name="q12" value="b"> b) Prepare key points and practice delivery</label>
+            <label><input type="radio" name="q12" value="c"> c) Create detailed visual aids</label>
+            <label><input type="radio" name="q12" value="d"> d) Rehearse with a test audience</label>
+        </div>
+        <div class="question">
+            <p>13. In group discussions, how do you ensure your ideas are understood?</p>
+            <label><input type="radio" name="q13" value="a"> a) Provide specific examples</label>
+            <label><input type="radio" name="q13" value="b"> b) Summarize main points frequently</label>
+            <label><input type="radio" name="q13" value="c"> c) Ask for feedback and clarification</label>
+            <label><input type="radio" name="q13" value="d"> d) Use visual aids or gestures</label>
+        </div>
+        <div class="question">
+            <p>14. When you don't understand something, what do you typically do?</p>
+            <label><input type="radio" name="q14" value="a"> a) Ask specific questions for clarification</label>
+            <label><input type="radio" name="q14" value="b"> b) Rephrase what I understood and verify</label>
+            <label><input type="radio" name="q14" value="c"> c) Research independently first</label>
+            <label><input type="radio" name="q14" value="d"> d) Wait for others to ask questions</label>
+        </div>
+        <div class="question">
+            <p>15. How do you adapt your communication style for different audiences?</p>
+            <label><input type="radio" name="q15" value="a"> a) Adjust vocabulary and technical terms</label>
+            <label><input type="radio" name="q15" value="b"> b) Change pace and detail level</label>
+            <label><input type="radio" name="q15" value="c"> c) Modify examples to be more relevant</label>
+            <label><input type="radio" name="q15" value="d"> d) Maintain consistent style for all audiences</label>
+        </div>
+        <button type="button" class="prev-button" onclick="prevPage(3)">Previous</button>
+        <button type="button" onclick="nextPage(3)">Next</button>
+    </div>
+
+    <!-- Page 4 - Problem-solving Skills -->
+    <div id="page4" class="question-page hidden">
+        <h1>Problem-solving Skills</h1>
+        <!-- Questions 16 to 20 -->
+        <div class="question">
+            <p>16. When analyzing data, what is your first step?</p>
+            <label><input type="radio" name="q16" value="a"> a) Look for patterns and trends</label>
+            <label><input type="radio" name="q16" value="b"> b) Verify data accuracy and completeness</label>
+            <label><input type="radio" name="q16" value="c"> c) Create visual representations</label>
+            <label><input type="radio" name="q16" value="d"> d) Compare with similar datasets</label>
+        </div>
+        <div class="question">
+            <p>17. How do you approach validating information?</p>
+            <label><input type="radio" name="q17" value="a"> a) Cross-reference multiple sources</label>
+            <label><input type="radio" name="q17" value="b"> b) Apply logical reasoning tests</label>
+            <label><input type="radio" name="q17" value="c"> c) Seek expert opinion</label>
+            <label><input type="radio" name="q17" value="d"> d) Compare with known facts</label>
+        </div>
+        <div class="question">
+            <p>18. When interpreting results, what do you prioritize?</p>
+            <label><input type="radio" name="q18" value="a"> a) Statistical significance</label>
+            <label><input type="radio" name="q18" value="b"> b) Practical implications</label>
+            <label><input type="radio" name="q18" value="c"> c) Potential biases</label>
+            <label><input type="radio" name="q18" value="d"> d) Correlation patterns</label>
+        </div>
+        <div class="question">
+            <p>19. How do you handle incomplete or ambiguous data?</p>
+            <label><input type="radio" name="q19" value="a"> a) Make reasonable assumptions and document them</label>
+            <label><input type="radio" name="q19" value="b"> b) Gather additional data if possible</label>
+            <label><input type="radio" name="q19" value="c"> c) Focus on available complete data only</label>
+            <label><input type="radio" name="q19" value="d"> d) Use statistical methods to estimate missing values</label>
+        </div>
+        <div class="question">
+            <p>20. When drawing conclusions, how do you ensure accuracy?</p>
+            <label><input type="radio" name="q20" value="a"> a) Test multiple hypotheses</label>
+            <label><input type="radio" name="q20" value="b"> b) Consider alternative explanations</label>
+            <label><input type="radio" name="q20" value="c"> c) Review methodology for errors</label>
+            <label><input type="radio" name="q20" value="d"> d) Consult with peers or experts</label>
+        </div>
+        <button type="button" class="prev-button" onclick="prevPage(4)">Previous</button>
+        <button type="button" id="finishButton">Finish</button>
+    </div>
+</form>
+
+<!-- Result Page -->
+<div id="result" class="hidden">
+    <h3>Results</h3>
+    <div id="resultMessage"></div>
+    <button type="button" id="backButton" class="back-button">Back to Home</button>
+</div>
+
+<script>
+    document.getElementById("backButton").addEventListener("click", function() {
+        window.location.href = "/";
+    });
+
+    document.getElementById("finishButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const correctAnswers = {
+            q1: "c", q2: "c", q3: "b", q4: "b", q5: "c",
+            q6: "b", q7: "a", q8: "b", q9: "b", q10: "b",
+            q11: "b", q12: "b", q13: "b", q14: "b", q15: "b",
+            q16: "b", q17: "b", q18: "b", q19: "a", q20: "b"
+        };
+
+        let cognitiveScore = 0;
+        let interpersonalScore = 0;
+        let verbalScore = 0;
+        let analyticalScore = 0;
+
+        // Cognitive Skills
+        for (let i = 1; i <= 5; i++) {
+            const userAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+            if (userAnswer && userAnswer.value === correctAnswers[`q${i}`]) {
+                cognitiveScore++;
+            }
+        }
+
+        // Interpersonal Skills
+        for (let i = 6; i <= 10; i++) {
+            const userAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+            if (userAnswer && userAnswer.value === correctAnswers[`q${i}`]) {
+                interpersonalScore++;
+            }
+        }
+
+        // Verbal Skills
+        for (let i = 11; i <= 15; i++) {
+            const userAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+            if (userAnswer && userAnswer.value === correctAnswers[`q${i}`]) {
+                verbalScore++;
+            }
+        }
+
+        // Analytical Skills
+        for (let i = 16; i <= 20; i++) {
+            const userAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+            if (userAnswer && userAnswer.value === correctAnswers[`q${i}`]) {
+                analyticalScore++;
+            }
+        }
+
+        const totalQuestions = 20;
+        const cognitivePercentage = (cognitiveScore / 5) * 100;
+        const interpersonalPercentage = (interpersonalScore / 5) * 100;
+        const verbalPercentage = (verbalScore / 5) * 100;
+        const analyticalPercentage = (analyticalScore / 5) * 100;
+
+        const resultDiv = document.getElementById("resultMessage");
+        resultDiv.innerHTML = `
+            <p>Cognitive Skills: ${cognitiveScore} / 5 (${cognitivePercentage}%)</p>
+            <p>Interpersonal Skills: ${interpersonalScore} / 5 (${interpersonalPercentage}%)</p>
+            <p>Verbal Skills: ${verbalScore} / 5 (${verbalPercentage}%)</p>
+            <p>Analytical Skills: ${analyticalScore} / 5 (${analyticalPercentage}%)</p>
+            <p><strong>Overall Performance:</strong> ${getPerformanceMessage(cognitivePercentage, interpersonalPercentage, verbalPercentage, analyticalPercentage)}</p>
+        `;
+
+        document.querySelectorAll(".question-page").forEach(page => page.classList.add("hidden"));
+        document.getElementById("result").classList.remove("hidden");
+    });
+
+    function getPerformanceMessage(cognitive, interpersonal, verbal, analytical) {
+        const averagePercentage = (cognitive + interpersonal + verbal + analytical) / 4;
+        if (averagePercentage > 90) return "Excellent";
+        if (averagePercentage > 75) return "Good";
+        if (averagePercentage > 50) return "Average";
+        return "Poor";
+    }
+
+    function nextPage(currentPage) {
+        document.getElementById(`page${currentPage}`).classList.add("hidden");
+        document.getElementById(`page${currentPage + 1}`).classList.remove("hidden");
+    }
+
+    function prevPage(currentPage) {
+        document.getElementById(`page${currentPage}`).classList.add("hidden");
+        document.getElementById(`page${currentPage - 1}`).classList.remove("hidden");
+    }
+</script>
+
+</body>
+</html>
